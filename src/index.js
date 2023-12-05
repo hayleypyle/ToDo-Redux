@@ -10,7 +10,17 @@ import { addTodo } from './actions/action_creators';
 
 
 store.dispatch(addTodo({
-  todoName: 'Go to Store'
+  todoName: 'Go to store'
+}
+));
+
+store.dispatch(addTodo({
+  todoName: 'Fold laundry'
+}
+));
+
+store.dispatch(addTodo({
+  todoName: 'Do homework'
 }
 ));
 

@@ -13,3 +13,9 @@ const rootReducer = (state = initialState, action) =>
 const store = configureStore({reducer: rootReducer});
 
 export default store;
+
+// export default configureStore({
+//     reducer:{
+//         todos: todoReducer,
+//     }
+// });

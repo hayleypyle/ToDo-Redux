@@ -1,5 +1,4 @@
 import { ADD_TODO, DELETE_TODO } from "../actions/action_constants";
-
 export default function todoReducer(state, action){
 
     
@@ -24,3 +23,4 @@ export default function todoReducer(state, action){
     }
 
     return state;}
+
