@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import todoReducer from '../reducers/todoReducer';
 
+
 const initialState = {
-    toDo: [],
-    nextExpenseId: 1
+    todos: [],
+    nextTodoId: 1
     }
 
 const rootReducer = (state = initialState, action) =>
