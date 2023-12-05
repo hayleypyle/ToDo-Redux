@@ -1,6 +1,7 @@
 import React, {useRef} from 'react'
 import { addTodo} from '../actions/action_creators'
 import { deleteTodo } from '../actions/action_creators'
+import { toggleTodo } from '../actions/action_creators'
 import { useDispatch} from 'react-redux'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
@@ -19,24 +20,46 @@ export default function ToDo(props) {
     const handleDelete = (event)=>{
         dispatch(deleteTodo({id: event.currentTarget.dataset.id}))
     }
-    // const [isChecked, setIsChecked]= useState('');
-    // const ref = useRef(null);
-    // const handleClick =()=>{
-    //     if(ref.current.checked){
-    //         console.log('checkbox is checked');
-    //     }
-    // }
-   
-    const todoList = todos.map(todo =>(
-        <div key={todo.id}>
-        <input type="checkbox"/>
-        {todo.todoName}
-        <button 
-        onClick={handleDelete}
+
+    const handleToggle = (event)=>{
+        dispatch(toggleTodo({id: event.currentTarget.dataset.id }));
+        console.log(todos);
+    };
+
+    const [filter, setFilter] = useState("all");
+
+    const filteredTodos = todos.filter((todo) => {
+    if (filter === "all") return true;
+    if (filter === "completed") return todo.completed;
+    if (filter === "incomplete") return !todo.completed;
+    });
+
+    const todoList = filteredTodos.map((todo) => (
+    <div key={todo.id}>
+        <input
+        type="checkbox"
+        onChange={handleToggle}
         data-id={todo.id}
-        >Delete</button>
-        </div>
-    ))
+        />
+        {todo.todoName}
+        <button onClick={handleDelete} data-id={todo.id}>
+        Delete
+        </button>
+    </div>
+    ));
+
+    
+
+    // const todoList = todos.map(todo =>(
+    //     <div key={todo.id}>
+    //     <input type="checkbox"/>
+    //     {todo.todoName}
+    //     <button 
+    //     onClick={handleDelete}
+    //     data-id={todo.id}
+    //     >Delete</button>
+    //     </div>
+    // ))
     
     return (
         <>
@@ -60,9 +83,9 @@ export default function ToDo(props) {
         </div>
 
         <div>
-            <button>Completed</button>
-            <button>Incomplete</button>
-            <button>View All</button>
+            <button onClick={()=> setFilter("completed")}>Completed</button>
+            <button onClick={()=> setFilter("incomplete")}>Incomplete</button>
+            <button onClick={() => setFilter("all")}>View All</button>
         </div>
         </>
 )

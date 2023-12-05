@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO } from "../actions/action_constants";
+import { ADD_TODO, DELETE_TODO, TOGGLE_TODO } from "../actions/action_constants";
 export default function todoReducer(state, action){
 
     
@@ -12,13 +12,22 @@ export default function todoReducer(state, action){
         nextTodoId: state.nextTodoId + 1,
         }
     } else if (action.type === DELETE_TODO){
-        console.log(state.todos)
+
         const newTodo = state.todos.filter(todo =>
         todo.id != action.payload.id);
-        console.log(newTodo);
         return{
             todos: newTodo,
             nextTodoId: state.nextTodoId
+        }
+    } else if (action.type === TOGGLE_TODO){
+        const filteredTodos = state.todos.map((todo)=> 
+        todo.id === action.payload.id
+        ?{...todo, completed: !todo.completed}
+        :todo
+        )
+        return{
+            ...state,
+            todos:filteredTodos,
         }
     }
 
