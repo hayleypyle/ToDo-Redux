@@ -1,24 +1,21 @@
-import logo from './logo.svg';
+import {HashRouter, Routes, Route, Link} from 'react-router-dom'
+import ToDo from './pages/todo'
+import Contact from './pages/contact'
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+          <ul>
+          <li><Link to="/">To Do List</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
+        </ul>
+      <Routes>
+        <Route path='/' element={<ToDo/>}>To Do List</Route>
+        <Route path='/contact' element={<Contact/>}>Contact</Route>
+      </Routes>
+    </HashRouter>
   );
 }
 
