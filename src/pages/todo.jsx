@@ -2,14 +2,18 @@ import React, {useRef} from 'react'
 import { addTodo} from '../actions/action_creators'
 import { deleteTodo } from '../actions/action_creators'
 import { toggleTodo } from '../actions/action_creators'
+import { showAllTodos } from '../actions/action_creators'
+import { showCompleteTodos } from '../actions/action_creators'
+import { showIncompleteTodos } from '../actions/action_creators'
 import { useDispatch} from 'react-redux'
 import { useSelector } from 'react-redux'
-import { useState } from 'react'
 
 export default function ToDo(props) {
     const userInput = useRef(null);
     const todos = useSelector(state => state.todos);
     const dispatch = useDispatch();
+
+
     const handleAdd = () =>{
         dispatch(addTodo({
             todoName: userInput.current.value
@@ -21,25 +25,33 @@ export default function ToDo(props) {
         dispatch(deleteTodo({id: event.currentTarget.dataset.id}))
     }
 
-    const handleToggle = (event)=>{
-        dispatch(toggleTodo({id: event.currentTarget.dataset.id }));
-        console.log(todos);
+    const handleToggle = ()=>{
+        dispatch(toggleTodo({}))
+        console.log(todos)
     };
 
-    const [filter, setFilter] = useState("all");
+    const showAll =(event) =>{
+        dispatch(showAllTodos({}))
 
-    const filteredTodos = todos.filter((todo) => {
-    if (filter === "all") return true;
-    if (filter === "completed") return todo.completed;
-    if (filter === "incomplete") return !todo.completed;
-    });
+    }
 
-    const todoList = filteredTodos.map((todo) => (
+    const showComplete = (event) =>{
+        dispatch(showCompleteTodos({}))
+    }
+
+    const showIncomplete = (event) =>{
+        dispatch(showIncompleteTodos({}))
+
+    }
+
+
+    const todoList = todos.map((todo) => (
     <div key={todo.id}>
         <input
         type="checkbox"
         onChange={handleToggle}
         data-id={todo.id}
+        checked={todo.complete}
         />
         {todo.todoName}
         <button onClick={handleDelete} data-id={todo.id}>
@@ -49,17 +61,6 @@ export default function ToDo(props) {
     ));
 
     
-
-    // const todoList = todos.map(todo =>(
-    //     <div key={todo.id}>
-    //     <input type="checkbox"/>
-    //     {todo.todoName}
-    //     <button 
-    //     onClick={handleDelete}
-    //     data-id={todo.id}
-    //     >Delete</button>
-    //     </div>
-    // ))
     
     return (
         <>
@@ -83,10 +84,9 @@ export default function ToDo(props) {
         </div>
 
         <div>
-            <button onClick={()=> setFilter("completed")}>Completed</button>
-            <button onClick={()=> setFilter("incomplete")}>Incomplete</button>
-            <button onClick={() => setFilter("all")}>View All</button>
+            <button onClick={showComplete}>Completed</button>
+            <button onClick={showIncomplete}>Incomplete</button>
+            <button onClick={showAll}>View All</button>
         </div>
         </>
-)
-}
+)}

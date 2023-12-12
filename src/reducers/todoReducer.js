@@ -19,17 +19,17 @@ export default function todoReducer(state, action){
             todos: newTodo,
             nextTodoId: state.nextTodoId
         }
+
     } else if (action.type === TOGGLE_TODO){
-        const filteredTodos = state.todos.map((todo)=> 
-        todo.id === action.payload.id
-        ?{...todo, completed: !todo.completed}
-        :todo
-        )
-        return{
-            ...state,
-            todos:filteredTodos,
+        const filteredTodos = state.todos.map((todo)=> {
+            if (todo.completed === true){
+                return {...state.todos,
+                completed:true,}
+            }
         }
+        
+        )
+        
     }
 
     return state;}
-
