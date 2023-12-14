@@ -1,5 +1,5 @@
-import { ADD_TODO, DELETE_TODO, TOGGLE_TODO } from "../actions/action_constants";
-export default function todoReducer(state, action){
+import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, ALL_TODO, COMPLETE_TODO, INCOMPLETE_TODO } from "../actions/action_constants";
+export default function todoReducer(state = [], action){
 
     
     if (action.type === ADD_TODO){
@@ -11,7 +11,8 @@ export default function todoReducer(state, action){
         todos: newTodo,
         nextTodoId: state.nextTodoId + 1,
         }
-    } else if (action.type === DELETE_TODO){
+    } 
+    else if (action.type === DELETE_TODO){
 
         const newTodo = state.todos.filter(todo =>
         todo.id != action.payload.id);
@@ -21,15 +22,22 @@ export default function todoReducer(state, action){
         }
 
     } else if (action.type === TOGGLE_TODO){
-        const filteredTodos = state.todos.map((todo)=> {
-            if (todo.completed === true){
-                return {...state.todos,
-                completed:true,}
-            }
-        }
-        
+    console.log(state.todos);
+    console.log(action)
+        const toggleTodo = state.todos.filter((todo) => 
+        todo.id == action.payload.id ? {...todo, completed: !todo.completed}: todo
         )
-        
+        console.log(toggleTodo);
+        return toggleTodo;
+      } 
+      else if (action.type === ALL_TODO){
+
+    } 
+    else if (action.type === COMPLETE_TODO){
+
+    } 
+    else if (action.type === INCOMPLETE_TODO){
+
     }
 
     return state;}

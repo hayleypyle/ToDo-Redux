@@ -25,9 +25,9 @@ export default function ToDo(props) {
         dispatch(deleteTodo({id: event.currentTarget.dataset.id}))
     }
 
-    const handleToggle = ()=>{
-        dispatch(toggleTodo({}))
-        console.log(todos)
+    const handleToggle = (event)=>{
+       dispatch(toggleTodo({id: event.currentTarget.dataset.id}))
+
     };
 
     const showAll =(event) =>{

@@ -13,14 +13,14 @@ export const deleteTodo = (payload) => ({
     payload,
 })
 
-export const toggleTodo =(payload) => ({
+export const toggleTodo =(id) => ({
     type: TOGGLE_TODO,
-    payload,
+    payload: id,
 })
 
-export const showAllTodos = (payload) => ({
+export const showAllTodos = (id) => ({
     type: ALL_TODO,
-    payload})
+    payload: id})
 
 export const showCompleteTodos = (payload) => ({
     type: COMPLETE_TODO,
