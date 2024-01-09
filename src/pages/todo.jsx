@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import ReactDOM from 'react-dom'
 import { addTodo } from '../actions/action_creators';
 import { deleteTodo } from '../actions/action_creators';
 import { toggleTodo } from '../actions/action_creators';
@@ -6,6 +7,10 @@ import { showAllTodos } from '../actions/action_creators';
 import { showCompleteTodos } from '../actions/action_creators';
 import { showIncompleteTodos } from '../actions/action_creators';
 import { useDispatch, useSelector } from 'react-redux';
+import './todo.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+
 
 export default function ToDo(props) {
 const userInput = useRef(null);
@@ -56,7 +61,7 @@ const showIncomplete = (event) => {
 };
 
 const todoList = todos.map((todo) => (
-    <div key={todo.id}>
+    <div key={todo.id} className="listclass">
         <input
         type="checkbox"
         onChange={handleToggle}
@@ -64,22 +69,25 @@ const todoList = todos.map((todo) => (
         checked={checkboxes[todo.id] || false}
         />
     {todo.todoName}
-        <button onClick={handleDelete} data-id={todo.id}>
-        Delete
-        </button>
+        <span onClick={handleDelete} data-id={todo.id} className="delete-task">
+        <FontAwesomeIcon icon={faTrashCan} />
+        </span>
     </div>
 ));
 
 return (
     <>
-    <div>
-        <h1>To Do List</h1>
-        <h3>Add to your list:</h3>
-        <input type="text" name="todoName" ref={userInput} required />
-        <button type="button" onClick={handleAdd}>
+    <div className="ToDo-Container">
+        <div className="titles"><h1>To Do List</h1>
+        <h3>Add to your list:</h3></div>
+    
+    <div className="ToDo-input">
+        <input id="text" type="text" name="todoName" ref={userInput} required />
+        <button type="button" id="add" onClick={handleAdd}>
             Add
         </button>
-    </div>
+        </div>
+   
 
     <div>{todoList}</div>
 
@@ -87,6 +95,7 @@ return (
         <button onClick={showComplete}>Completed</button>
         <button onClick={showIncomplete}>Incomplete</button>
         <button onClick={showAll}>View All</button>
+    </div>
     </div>
     </>
 );

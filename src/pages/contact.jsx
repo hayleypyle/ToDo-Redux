@@ -1,4 +1,5 @@
 import React from 'react'
+import './contact.css'
 
 export default function Contact() {
     const handleForm =(event) => {
@@ -13,27 +14,27 @@ export default function Contact() {
         }
     }
     return (
-    <div>
+    <div className="contact-container">
         <h1>Contact Us</h1>
-        <form action="" onSubmit={handleForm}>
+        <form action="" onSubmit={handleForm} className="form-container">
             <label>First Name:
             <input type="text"
-            name="first-name"></input>
+            name="first-name" className="contact-input"></input>
             </label>
 
             <label>Last Name:
             <input type="text"
-            name="last-name"></input>
+            name="last-name" className="contact-input"></input>
             </label>
 
             <label>Email:
             <input type="email"
-            name="email"></input>
+            name="email" className="contact-input"></input>
             </label>
 
             <label>Comments:
             <input type="text"
-            name="comments"></input>
+            name="comments" className="comment-input"></input>
             </label>
             <button type="submit">Submit</button>
         </form>

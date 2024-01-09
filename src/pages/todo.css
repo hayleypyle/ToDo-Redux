@@ -1,0 +1,121 @@
+li{
+    list-style:none;
+}
+
+.ToDo-Container{
+    color:black;
+    font-size:1.5rem;
+    min-height:86vh;
+    min-width:75vw;
+    margin:10px;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.titles h1, h3{
+    margin:10px
+}
+
+.ToDo-input{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom:10px;
+    margin-bottom:10px;
+}
+
+.ToDo-input input[type="text"]{
+    width:50vw;
+    height:20px;
+    
+}
+
+
+.ToDo-List{
+    width:50vw;
+    display:flex;
+    flex-direction: column;
+    background-color: #D3E7FF;
+    color:black;
+    border-radius:5px;
+    min-height:25vh;
+    margin-bottom:15px;
+    padding:10px;
+
+
+}
+
+.userinput{
+    width:40vw;
+    
+}
+
+#add{
+    background-color: white;
+    border: 2px solid #3F98FF;
+    color:#3072BD;
+    border-radius:5px;
+    width:50vw;
+    height:30px;
+    margin:10px;
+}
+#add:hover{
+    background-color:#3F98FF;
+    border: #3F98FF;
+    color:white;
+
+}
+#reset{
+    background-color:#3F98FF;
+    color:white;
+    border:none;
+    border-radius:5px;
+    width:50vw;
+    margin-bottom:10px;
+    height:30px;
+}
+
+#reset:hover{
+    background-color:#33658A;
+    color:white;
+}
+
+.listclass{
+    display:flex;
+    background-color:white;
+    color:black;
+    margin:2px;
+    border-radius:5px;
+    font-size:20px;
+    height:auto;
+    
+    }
+    .listclass input[type="checkbox"]{
+        align-self: center;
+        margin-left:5px;
+    }
+    
+    
+    .list-input{
+        display:flex;
+        flex-wrap:wrap;
+        width:75vw;
+        padding:5px;
+        justify-content: space-between;
+    
+    }
+    
+    .delete-task{
+        display:flex;
+        justify-content: center;
+        font-size:12px;
+        align-items:center;
+        background-color:#E0EDF5;
+        color:black;
+        border-radius:15px;
+        padding:2px;
+        width:20px;
+        height:20px
+    }
