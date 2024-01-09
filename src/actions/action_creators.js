@@ -13,9 +13,9 @@ export const deleteTodo = (payload) => ({
     payload,
 })
 
-export const toggleTodo =(id) => ({
+export const toggleTodo =(payload) => ({
     type: TOGGLE_TODO,
-    payload: id,
+    payload,
 })
 
 export const showAllTodos = (id) => ({
