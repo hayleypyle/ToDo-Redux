@@ -20,7 +20,6 @@ const todos = useSelector((state) => state.todos.filteredTodos || state.todos.to
 const dispatch = useDispatch();
 
 useEffect(() => {
-    // Update local state when todos change
     const updatedCheckboxes = todos.reduce((acc, todo) => {
         acc[todo.id] = todo.completed;
         return acc;
@@ -68,10 +67,12 @@ const todoList = todos.map((todo) => (
         data-id={todo.id}
         checked={checkboxes[todo.id] || false}
         />
-    {todo.todoName}
+    <div className="list-input">
+        <div className="list-text">{todo.todoName}</div>
         <span onClick={handleDelete} data-id={todo.id} className="delete-task">
         <FontAwesomeIcon icon={faTrashCan} />
         </span>
+        </div>
     </div>
 ));
 
@@ -87,14 +88,14 @@ return (
             Add
         </button>
         </div>
-   
 
-    <div>{todoList}</div>
+
+    <div className="ToDo-list-container">{todoList}</div>
 
     <div>
-        <button onClick={showComplete}>Completed</button>
-        <button onClick={showIncomplete}>Incomplete</button>
-        <button onClick={showAll}>View All</button>
+        <button onClick={showComplete} id="view">Completed</button>
+        <button onClick={showIncomplete} id="view">Incomplete</button>
+        <button onClick={showAll} id="view">View All</button>
     </div>
     </div>
     </>

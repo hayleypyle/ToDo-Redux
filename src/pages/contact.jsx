@@ -1,17 +1,41 @@
-import React from 'react'
+import React, { useRef, useState, useEffect } from 'react';
 import './contact.css'
+import { updateForm } from '../actions/action_creators';
+import { useDispatch, useSelector} from 'react-redux';
 
-export default function Contact() {
-    const handleForm =(event) => {
+
+export default function Contact(props) {
+    // const [input, setInput] = useState({}); 
+    const formData = useSelector((state) => state.contact);
+        console.log('Form Data:', formData);
+
+    const fnameInput = useRef(null);
+    const lnameInput = useRef(null);
+    const emailInput = useRef(null);
+    const commentsInput = useRef(null);
+    
+    const dispatch = useDispatch();
+
+    const handleForm = (event) => {
         event.preventDefault();
-        let form = event.target;
+        
 
-        let formData = new FormData(form);
-        let formDataObj = Object.fromEntries(formData)
+        dispatch(updateForm({
+            firstName: fnameInput.current.value,
+            lastName: lnameInput.current.value,
+            email: emailInput.current.value,
+            comments: commentsInput.current.value,
 
-        if(formDataObj.Name === ""){
-            //
-        }
+            }));
+            
+            fnameInput.current.value = '';
+            lnameInput.current.value = '';
+            emailInput.current.value = '';
+            commentsInput.current.value = '';
+
+        ;
+        
+
     }
     return (
     <div className="contact-container">
@@ -19,22 +43,21 @@ export default function Contact() {
         <form action="" onSubmit={handleForm} className="form-container">
             <label>First Name:
             <input type="text"
-            name="first-name" className="contact-input"></input>
+            name="first-name" className="contact-input" ref={fnameInput}></input>
             </label>
 
             <label>Last Name:
             <input type="text"
-            name="last-name" className="contact-input"></input>
+            name="last-name" className="contact-input" ref={lnameInput}></input>
             </label>
 
             <label>Email:
             <input type="email"
-            name="email" className="contact-input"></input>
+            name="email" className="contact-input" ref={emailInput}></input>
             </label>
 
             <label>Comments:
-            <input type="text"
-            name="comments" className="comment-input"></input>
+            <textarea className="comment-input" ref={commentsInput}></textarea>
             </label>
             <button type="submit">Submit</button>
         </form>

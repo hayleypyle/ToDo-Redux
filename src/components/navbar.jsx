@@ -25,10 +25,10 @@ li {
 function Nav() {
 return (
     <NavUnlisted>
-    <NavLink to="/todos" activeClassName="current" >
+    <NavLink to="/todos" activeclassname="current" >
         <li>To Do List</li>
     </NavLink>
-    <NavLink to="/contact" activeClassName="current" >
+    <NavLink to="/contact" activeclassname="current" >
         <li>Contact</li>
     </NavLink>
     </NavUnlisted>

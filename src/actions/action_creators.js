@@ -1,4 +1,12 @@
-import { ADD_TODO, DELETE_TODO,TOGGLE_TODO, ALL_TODO,COMPLETE_TODO,INCOMPLETE_TODO } from './action_constants';
+import { 
+    ADD_TODO, 
+    DELETE_TODO,
+    TOGGLE_TODO, 
+    ALL_TODO,
+    COMPLETE_TODO,
+    INCOMPLETE_TODO, 
+    UPDATE_FORM 
+} from './action_constants';
 
 export const addTodo = (payload) => ({
     type: ADD_TODO, 
@@ -29,3 +37,9 @@ export const showCompleteTodos = (payload) => ({
 export const showIncompleteTodos = (payload) => ({
     type: INCOMPLETE_TODO,
     payload})
+
+
+export const updateForm = (formData) => ({
+    type: UPDATE_FORM,
+    payload: formData
+})

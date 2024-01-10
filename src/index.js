@@ -5,24 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import store from './store/store'
-import { addTodo } from './actions/action_creators';
 
-
-
-// store.dispatch(addTodo({
-//   todoName: 'Go to store'
-// }
-// ));
-
-// store.dispatch(addTodo({
-//   todoName: 'Fold laundry'
-// }
-// ));
-
-// store.dispatch(addTodo({
-//   todoName: 'Do homework'
-// }
-// ));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
