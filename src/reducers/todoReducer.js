@@ -1,15 +1,4 @@
-import { 
-    ADD_TODO, 
-    DELETE_TODO, 
-    TOGGLE_TODO, 
-    ALL_TODO, 
-    COMPLETE_TODO, 
-    INCOMPLETE_TODO 
-} from "../actions/action_constants";
-import { combineReducers } from 'redux';
-import { contactReducer } from './contactReducer';
-
-
+import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, ALL_TODO, COMPLETE_TODO, INCOMPLETE_TODO } from "../actions/action_constants";
 const initialState = {
     todos: [
         { todoName: 'Go to store', completed: false, id: 1 },
@@ -18,7 +7,7 @@ const initialState = {
     ],
     nextTodoId: 4
 };
-const todoReducer =(state = initialState, action)=>{
+export default function todoReducer(state = initialState, action){
 
     
     if (action.type === ADD_TODO){
@@ -69,10 +58,3 @@ const todoReducer =(state = initialState, action)=>{
         };
     }
     return state;}
-
-    const rootReducer = combineReducers({
-        contact: contactReducer,
-        todo: todoReducer
-    })
-
-export default rootReducer
