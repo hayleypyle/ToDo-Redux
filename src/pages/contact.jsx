@@ -1,13 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import './contact.css'
 import { updateForm } from '../actions/action_creators';
-import { useDispatch, useSelector} from 'react-redux';
+import { useDispatch} from 'react-redux';
 
 
 export default function Contact(props) {
-    // const [input, setInput] = useState({}); 
-    const formData = useSelector((state) => state.contact);
-        console.log('Form Data:', formData);
+
 
     const fnameInput = useRef(null);
     const lnameInput = useRef(null);
@@ -16,17 +14,20 @@ export default function Contact(props) {
     
     const dispatch = useDispatch();
 
+
     const handleForm = (event) => {
         event.preventDefault();
-        
 
-        dispatch(updateForm({
-            firstName: fnameInput.current.value,
-            lastName: lnameInput.current.value,
-            email: emailInput.current.value,
-            comments: commentsInput.current.value,
+    const formData = {
+        firstName: fnameInput.current.value,
+        lastName: lnameInput.current.value,
+        email: emailInput.current.value,
+        comments: commentsInput.current.value,
 
-            }));
+}
+        console.log(formData);
+        dispatch(updateForm({formData}));
+        console.log(formData);
             
             fnameInput.current.value = '';
             lnameInput.current.value = '';

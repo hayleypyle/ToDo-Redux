@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import ReactDOM from 'react-dom'
 import { addTodo } from '../actions/action_creators';
 import { deleteTodo } from '../actions/action_creators';
 import { toggleTodo } from '../actions/action_creators';
