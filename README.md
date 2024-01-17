@@ -13,4 +13,4 @@ This is a website that can make a to do list for the user.
     - The user can assign a due date for a to do item. 
 
 # Website Link
-[https://hayleypyle.github.io/ToDo-Redux/](https://hayleypyle.github.io/ToDo-Redux/)
+[https://hayleypyle.github.io/ToDo-Redux/](https://hayleypyle.github.io/ToDo-Redux/#/todos)
