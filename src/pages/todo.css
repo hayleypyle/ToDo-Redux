@@ -132,3 +132,19 @@ li{
     border-radius:5px;
     min-width:75vw;
 }
+
+@media screen and (max-width: 450px){
+    #view{
+        background-color:#3F98FF;
+        color:white;
+        border:none;
+        border-radius:5px;
+        width:100%;
+        margin: 1%;
+        height:10%;
+        font-size:1rem;
+    }
+    
+
+
+}
